@@ -1,7 +1,6 @@
-const errorDiv=document.getElementById('empty');
+ const errorDiv=document.getElementById('empty');
 // input part///
 const searchThis=()=>{
-// const errorDiv=document.getElementById('empty');
     const search=document.getElementById('take-input');
     const searchText=search.value;
     search.value='';
@@ -11,13 +10,11 @@ if(searchText==''){
     errorDiv.innerText="search field cannot be empty";
     return;
 }
-
  const url=`https://openlibrary.org/search.json?q=${searchText}`;
     fetch (url)
     .then(res=>res.json())
     .then(data=>displayBook(data))  
 }
-
 const displayBook=data=>{
     resultNumber(data);
     if(data.status==404){
@@ -29,8 +26,8 @@ const displayBook=data=>{
      const containerDiv=document.getElementById('display-book');
      const books=data.docs;
       // clear dom part////
- containerDiv.innerHTML="";
-     
+ 
+      containerDiv.innerHTML=""; 
     books?.forEach(book=>{
          console.log(book);
      const div=document.createElement('div');
@@ -58,5 +55,3 @@ const resultDiv=document.getElementById('result');
 resultDiv.innerHTML=`<p>Result found: ${count.num_found}</p>`;
 
 }
-//  // clear dom part////
-//  containerDiv.innerHTML="";
